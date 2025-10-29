@@ -7,7 +7,7 @@ import { GooeyText } from '@/components/ui/gooey-text-morphing';
 
 export default function HeroSection() {
   return (
-    <section id="home" className="relative min-h-[80vh] flex items-center justify-center px-6 pb-20">
+    <section id="home" className="relative min-h-[80vh] flex items-center justify-center pt-36 sm:pt-32 px-6 pb-20">
       <div className="max-w-4xl mx-auto text-left z-10 w-full p-8 rounded-3xl glass-morphism">
         <AnimateOnScroll animationClass="animate-scale-in">
             <GooeyText
@@ -21,7 +21,7 @@ export default function HeroSection() {
         
         <AnimateOnScroll animationClass="animate-slide-in-up" delay={200}>
           <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl">
-            Coreveil Automation empowers businesses to reclaim time, slash operational costs, and scale effortlessly. We build intelligent Business Process, Chat, and Voice AI solutions that work 24/7, so your team can focus on what matters most: growing your business.
+            Coreveil Automation empowers business to reclaim time, slash operational costs, and scale effortlessly. We build intelligent Business Process, Chat, and Voice AI solutions that work 24/7, so your team can focus on what matters most: growing your business.
           </p>
         </AnimateOnScroll>
         

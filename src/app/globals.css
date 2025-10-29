@@ -1,0 +1,146 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 224 71% 4%;
+    --foreground: 210 40% 98%;
+    --card: 224 71% 4%;
+    --card-foreground: 210 40% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 85%;
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 60%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 210 40% 100%;
+    --card: 224 71% 4%;
+    --card-foreground: 210 40% 100%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 210 40% 100%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 85%;
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  .holographic-card {
+    position: relative;
+    width: var(--card-width);
+    height: var(--card-height);
+    border-radius: 1.5rem; /* 24px */
+    overflow: hidden;
+    transition: transform 0.1s ease;
+    will-change: transform;
+    transform-style: preserve-3d;
+  }
+
+  .holographic-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(
+        circle at var(--bg-x) var(--bg-y),
+        var(--color-holo-1),
+        var(--color-holo-2)
+      ),
+      repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0.05) 1px,
+        rgba(255, 255, 255, 0) 2px
+      );
+    background-blend-mode: screen;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .holographic-card:hover::before {
+    opacity: 1;
+  }
+  .holo-glow {
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
+    width: 200px;
+    height: 200px;
+    background: var(--color-glow);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(80px);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .holographic-card:hover .holo-glow {
+    opacity: 1;
+  }
+  .holo-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    transform: translateZ(0); /* Promotes to a new layer */
+  }
+}
+
+@layer utilities {
+  .text-gradient-animate {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-[length:300%_100%] animate-gradient-shift;
+  }
+
+  .gradient-border {
+    @apply bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-[length:300%_100%] animate-gradient-shift;
+  }
+
+  .glass-morphism {
+    @apply bg-background/60 backdrop-blur-md border border-white/10;
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  .hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
